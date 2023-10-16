@@ -120,7 +120,7 @@ Module.register("clock", {
 
 		// Style Wrappers
 		dateWrapper.className = "date normal medium";
-		timeWrapper.className = "time bright xlarge light";
+		timeWrapper.className = "time bright xxxxlarge light";
 		secondsWrapper.className = "seconds dimmed";
 		sunWrapper.className = "sun dimmed small";
 		moonWrapper.className = "moon dimmed small";
