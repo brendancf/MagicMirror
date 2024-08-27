@@ -10,7 +10,6 @@
   --font-size-small: 1rem;
   --font-size-medium: 1.5rem;
   --font-size-large: 3.25rem;
-  --font-size-xlarge: 3.75rem;
   --gap-body-top: 60px;
   --gap-body-right: 60px;
   --gap-body-bottom: 60px;
@@ -77,12 +76,6 @@ body {
 .large {
   font-size: var(--font-size-large);
   line-height: 1;
-}
-
-.xlarge {
-  font-size: var(--font-size-xlarge);
-  line-height: 1;
-  letter-spacing: -3px;
 }
 
 .thin {
