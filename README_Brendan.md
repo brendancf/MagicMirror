@@ -47,6 +47,55 @@ pm2 restart mm
 
 # Deployment
 
-Host running on 192.168.1.200
-`ssh brendancf@192.168.1.200`
-`cd Documents/code/MagicMirror`
+Production server: `192.168.1.200`
+
+## Scripts
+
+All scripts are in the `scripts/` directory. Before first use, create `scripts/.env`:
+
+```bash
+SERVER=brendancf@192.168.1.200
+REMOTE_DIR=Documents/code/MagicMirror
+```
+
+### Deploy to Production
+
+```bash
+./scripts/deploy.sh
+```
+
+Deploys your code to the Raspberry Pi:
+
+- Validates all changes are committed and pushed (main repo + modules)
+- Pulls latest code on the server
+- Installs dependencies
+- Restarts MagicMirror via pm2
+
+### Check for Upstream Updates
+
+```bash
+./scripts/update-from-upstream.sh          # Show status only
+./scripts/update-from-upstream.sh --merge  # Merge upstream changes
+```
+
+Checks your forked repos for updates from upstream:
+
+- Automatically adds the `upstream` remote if missing
+- Shows how many commits behind/ahead you are
+- With `--merge`, merges upstream into your local branch
+
+### Other Scripts
+
+```bash
+./scripts/restart.sh        # Restart MagicMirror on server
+./scripts/server-status.sh  # Check pm2 status on server
+./scripts/fetch-logs.sh     # Fetch logs from server
+```
+
+## Manual Access
+
+```bash
+ssh brendancf@192.168.1.200
+cd Documents/code/MagicMirror
+pm2 restart mm
+```
