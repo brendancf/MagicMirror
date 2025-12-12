@@ -1,18 +1,22 @@
 Modules to install
 
+`git clone https://github.com/KirAsh4/calendar_monthly`
+`git clone https://github.com/kolbyjack/MMM-Wallpaper.git`
+`git clone https://github.com/linuxtuxie/MMM-SunnyPortal.git`
+`git clone https://github.com/Jopyth/MMM-Remote-Control`
+`git clone https://github.com/ianperrin/MMM-ModuleScheduler.git`
+`git clone https://github.com/BKeyport/MMM-Multimonth`
+
+## Forked repositories to install
+
+`git clone git@github.com:brendancf/MMM-Wallpaper.git`
 `git clone git@github.com:brendancf/MMM-GoogleCalendar.git`
 `git clone git@github.com:brendancf/MMM-GooglePhotos.git`
 `git clone git@github.com:brendancf/MMM-GoogleTrafficTimes.git`
 `git clone git@github.com:brendancf/MMM-Sonos.git`
 `git clone git@github.com:brendancf/MMM-WyzeBridge.git`
 `git clone git@github.com:brendancf/MMM-GoogleMapsTraffic.git`
-`git clone https://github.com/KirAsh4/calendar_monthly`
-`git clone https://github.com/kolbyjack/MMM-Wallpaper.git`
-`git clone git@github.com:brendancf/MMM-Wallpaper.git`
-`git clone https://github.com/linuxtuxie/MMM-SunnyPortal.git`
-`git clone https://github.com/Jopyth/MMM-Remote-Control`
-`git clone https://github.com/ianperrin/MMM-ModuleScheduler.git`
-`git clone https://github.com/FlatPepsi17/MMM-WeatherGraph`
+`git clone git@github.com:brendancf/MMM-WeatherGraph.git`
 
 Set up WyzeBridge
 https://github.com/mrlt8/docker-wyze-bridge
@@ -33,6 +37,16 @@ Mac
 - config.json
 - wyzebridge docker compose
 
+# Run Locally
+
+`npm run start`
+
 ## Restart
 
 pm2 restart mm
+
+# Deployment
+
+Host running on 192.168.1.200
+`ssh brendancf@192.168.1.200`
+`cd Documents/code/MagicMirror`
