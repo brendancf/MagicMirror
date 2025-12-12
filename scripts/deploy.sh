@@ -112,6 +112,12 @@ ssh "$SERVER" "cd $REMOTE_DIR/modules && for dir in MMM-*/; do
     fi
 done"
 
+# Workaround: MMM-Remote-Control uuid ESM issue
+# uuid@13+ is ESM-only and breaks Electron's require(). Pin to v9.
+echo ""
+echo "=== Applying workarounds ==="
+ssh "$SERVER" "cd $REMOTE_DIR/modules/MMM-Remote-Control && npm install uuid@9 --save-exact 2>/dev/null && echo 'Applied uuid@9 fix for MMM-Remote-Control'"
+
 # Restart MagicMirror
 echo ""
 echo "=== Restarting MagicMirror ==="
