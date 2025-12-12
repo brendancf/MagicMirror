@@ -79,3 +79,6 @@ Temporary Items
 *.orig
 *.rej
 *.bak
+
+# Deployment environment (contains server credentials)
+scripts/.env
