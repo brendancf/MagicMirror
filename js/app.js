@@ -8,6 +8,21 @@
 // Alias modules mentioned in package.js under _moduleAliases.
 require("module-alias/register");
 
+// Configure DNS servers to improve reliability and prevent EAI_AGAIN errors
+// This adds reliable public DNS servers as fallbacks to system DNS
+const dns = require("dns");
+try {
+	const systemDns = dns.getServers();
+	// Add reliable public DNS servers as fallbacks (Google and Cloudflare)
+	const reliableDns = ["8.8.8.8", "8.8.4.4", "1.1.1.1", "1.0.0.1"];
+	// Combine system DNS with reliable fallbacks, removing duplicates
+	const allDns = [...new Set([...systemDns, ...reliableDns])];
+	dns.setServers(allDns);
+} catch (error) {
+	// If DNS configuration fails, continue anyway
+	console.warn("Could not configure DNS servers:", error.message);
+}
+
 const fs = require("fs");
 const path = require("path");
 const envsub = require("envsub");
