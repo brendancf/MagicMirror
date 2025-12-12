@@ -64,18 +64,15 @@ if [ -n "$MODULES_WITH_CHANGES" ]; then
     exit 1
 fi
 
-# Check if any module repos have unpushed commits
+# Check if any module repos have unpushed commits (ahead of remote)
 MODULES_NOT_PUSHED=""
 for dir in "$PROJECT_DIR"/modules/MMM-*/; do
     if [ -d "$dir/.git" ]; then
         module_name=$(basename "$dir")
-        # Check if there's an upstream and if we're ahead
-        if (cd "$dir" && git rev-parse @{u} &>/dev/null); then
-            local_sha=$(cd "$dir" && git rev-parse HEAD)
-            remote_sha=$(cd "$dir" && git rev-parse @{u})
-            if [ "$local_sha" != "$remote_sha" ]; then
-                MODULES_NOT_PUSHED="$MODULES_NOT_PUSHED  $module_name\n"
-            fi
+        # Check if there's an upstream and if we're ahead (not just different)
+        ahead_count=$(cd "$dir" && git rev-list --count @{u}..HEAD 2>/dev/null || echo "0")
+        if [ "$ahead_count" -gt 0 ]; then
+            MODULES_NOT_PUSHED="$MODULES_NOT_PUSHED  $module_name ($ahead_count commits ahead)\n"
         fi
     fi
 done
