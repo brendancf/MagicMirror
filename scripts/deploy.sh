@@ -112,6 +112,16 @@ ssh "$SERVER" "cd $REMOTE_DIR/modules && for dir in MMM-*/; do
     fi
 done"
 
+# Sync config file (gitignored, so must be copied directly)
+echo ""
+echo "=== Syncing config ==="
+if [ -f "$PROJECT_DIR/config/config.js" ]; then
+    scp "$PROJECT_DIR/config/config.js" "$SERVER:$REMOTE_DIR/config/config.js"
+    echo "Config synced to server"
+else
+    echo "WARNING: No local config/config.js found, skipping sync"
+fi
+
 # Workaround: MMM-Remote-Control uuid ESM issue
 # uuid@13+ is ESM-only and breaks Electron's require(). Pin to v9.
 echo ""
