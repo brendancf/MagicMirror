@@ -62,9 +62,6 @@ Temporary Items
 !/modules/default
 !/modules/default/**
 !/modules/README.md
-!/modules/MMM-FlightStatus
-!/modules/MMM-FlightStatus/**
-/modules/MMM-FlightStatus/node_modules/
 
 # Ignore changes to the custom css files.
 /css/custom.css
