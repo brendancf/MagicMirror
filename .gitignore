@@ -61,7 +61,10 @@ Temporary Items
 /modules/**
 !/modules/default
 !/modules/default/**
-!/modules/README.md**
+!/modules/README.md
+!/modules/MMM-FlightStatus
+!/modules/MMM-FlightStatus/**
+/modules/MMM-FlightStatus/node_modules/
 
 # Ignore changes to the custom css files.
 /css/custom.css
@@ -69,6 +72,7 @@ Temporary Items
 # Ignore users config file but keep the sample.
 /config/*
 !/config/config.js.sample
+!/config/keys.sample.js
 
 # Vim
 ## swap
