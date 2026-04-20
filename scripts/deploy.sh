@@ -91,13 +91,13 @@ echo ""
 echo "=== Updating main MagicMirror repo ==="
 ssh "$SERVER" "cd $REMOTE_DIR && git pull"
 
-# Update all module repos
+# Update all module repos (reset to match remote so local npm/uuid tweaks never block pulls)
 echo ""
 echo "=== Updating module repos ==="
 ssh "$SERVER" "cd $REMOTE_DIR/modules && for dir in MMM-*/; do
     if [ -d \"\$dir/.git\" ]; then
         echo \"Updating \$dir...\"
-        (cd \"\$dir\" && git pull) || echo \"  WARNING: Failed to update \$dir\"
+        (cd \"\$dir\" && git fetch origin && branch=\$(git rev-parse --abbrev-ref HEAD) && git reset --hard \"origin/\$branch\") || echo \"  WARNING: Failed to update \$dir\"
     fi
 done"
 
@@ -108,7 +108,11 @@ ssh "$SERVER" "cd $REMOTE_DIR && npm install"
 ssh "$SERVER" "cd $REMOTE_DIR/modules && for dir in MMM-*/; do
     if [ -f \"\$dir/package.json\" ]; then
         echo \"Installing deps for \$dir...\"
-        (cd \"\$dir\" && npm install) || echo \"  WARNING: npm install failed for \$dir\"
+        if [ \"\$dir\" = \"MMM-Remote-Control/\" ]; then
+            (cd \"\$dir\" && npm install --ignore-engines) || echo \"  WARNING: npm install failed for \$dir\"
+        else
+            (cd \"\$dir\" && npm install) || echo \"  WARNING: npm install failed for \$dir\"
+        fi
     fi
 done"
 
