@@ -1,6 +1,8 @@
 // API keys and secrets. Copy to keys.js and fill in.
 // keys.js is gitignored and must not be committed.
 module.exports = {
-	AVIATIONSTACK_KEY: "", // AviationStack API key for MMM-FlightStatus
-	NEXTDNS_KEY: ""        // NextDNS API key for MMM-NextDNS
+	AVIATIONSTACK_KEY: "",    // AviationStack API key for MMM-FlightStatus
+	NEXTDNS_KEY: "",          // NextDNS API key (kept for reference, no longer used by MMM-NextDNS)
+	NOTION_TOKEN: "",         // Notion integration token for MMM-NextDNS state
+	NOTION_NEXTDNS_DB: "",    // Notion database ID for NextDNS state
 };
