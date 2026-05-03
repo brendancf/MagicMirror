@@ -5,6 +5,7 @@
   --color-background: #000;
   --font-primary: "Roboto Condensed";
   --font-secondary: "Roboto";
+  --font-emoji: "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji";
   --font-size: 20px;
   --font-size-xsmall: 0.75rem;
   --font-size-small: 1rem;
@@ -36,7 +37,7 @@ body {
   width: calc(100% - var(--gap-body-right) - var(--gap-body-left));
   background: var(--color-background);
   color: var(--color-text);
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-primary), var(--font-emoji), sans-serif;
   font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -79,22 +80,22 @@ body {
 }
 
 .thin {
-  font-family: var(--font-secondary), sans-serif;
+  font-family: var(--font-secondary), var(--font-emoji), sans-serif;
   font-weight: 100;
 }
 
 .light {
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-primary), var(--font-emoji), sans-serif;
   font-weight: 300;
 }
 
 .regular {
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-primary), var(--font-emoji), sans-serif;
   font-weight: 400;
 }
 
 .bold {
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-primary), var(--font-emoji), sans-serif;
   font-weight: 700;
 }
 
@@ -109,7 +110,7 @@ body {
 header {
   text-transform: uppercase;
   font-size: var(--font-size-xsmall);
-  font-family: var(--font-primary), Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary), var(--font-emoji), Arial, Helvetica, sans-serif;
   font-weight: 400;
   border-bottom: 1px solid var(--color-text-dimmed);
   line-height: 15px;
