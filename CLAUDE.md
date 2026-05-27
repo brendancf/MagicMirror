@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-MagicMirror² is a modular smart mirror platform. This is a personal fork running on a Raspberry Pi (192.168.1.200) with several third-party modules installed.
+MagicMirror² is a modular smart mirror platform. This is a personal fork running on a Raspberry Pi (`magic-mirror`, Tailscale) with several third-party modules installed.
 
 ## Common Commands
 
