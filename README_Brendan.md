@@ -47,14 +47,14 @@ pm2 restart mm
 
 # Deployment
 
-Production server: `192.168.1.200`
+Production server: `magic-mirror` (Tailscale hostname, `100.96.37.30`)
 
 ## Scripts
 
 All scripts are in the `scripts/` directory. Before first use, create `scripts/.env`:
 
 ```bash
-SERVER=brendancf@192.168.1.200
+SERVER=brendancf@magic-mirror
 REMOTE_DIR=Documents/code/MagicMirror
 ```
 
@@ -95,7 +95,7 @@ Checks your forked repos for updates from upstream:
 ## Manual Access
 
 ```bash
-ssh brendancf@192.168.1.200
+ssh brendancf@magic-mirror
 cd Documents/code/MagicMirror
 pm2 restart mm
 ```

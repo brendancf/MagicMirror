@@ -1,7 +1,7 @@
 #!/bin/bash
 # Check MagicMirror server status
 
-SERVER="brendancf@192.168.1.200"
+SERVER="brendancf@magic-mirror"
 
 echo "=== PM2 Status ==="
 ssh "$SERVER" "pm2 status"

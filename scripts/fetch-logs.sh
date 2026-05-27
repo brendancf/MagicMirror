@@ -1,7 +1,7 @@
 #!/bin/bash
 # Fetch logs from the MagicMirror deployment server
 
-SERVER="brendancf@192.168.1.200"
+SERVER="brendancf@magic-mirror"
 LOGS_DIR="$(dirname "$0")/../logs"
 
 mkdir -p "$LOGS_DIR"
