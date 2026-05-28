@@ -116,14 +116,20 @@ ssh "$SERVER" "cd $REMOTE_DIR/modules && for dir in MMM-*/; do
     fi
 done"
 
-# Sync config file (gitignored, so must be copied directly)
+# Sync gitignored config files (must be copied directly)
 echo ""
 echo "=== Syncing config ==="
 if [ -f "$PROJECT_DIR/config/config.js" ]; then
     scp "$PROJECT_DIR/config/config.js" "$SERVER:$REMOTE_DIR/config/config.js"
-    echo "Config synced to server"
+    echo "config.js synced to server"
 else
     echo "WARNING: No local config/config.js found, skipping sync"
+fi
+if [ -f "$PROJECT_DIR/config/keys.js" ]; then
+    scp "$PROJECT_DIR/config/keys.js" "$SERVER:$REMOTE_DIR/config/keys.js"
+    echo "keys.js synced to server"
+else
+    echo "WARNING: No local config/keys.js found, skipping sync"
 fi
 
 # Workaround: MMM-Remote-Control uuid ESM issue
