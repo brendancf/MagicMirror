@@ -119,6 +119,27 @@ pm2 logs mm          # View logs
 
 ## Known Issues & Workarounds
 
+### Calendar stops updating (fixed Sep 2026)
+
+**Symptom**: MMM-GoogleCalendar keeps showing the same events for days while every
+other module stays current. The screen looks fine, so it is easy to miss.
+
+**Cause**: each calendar refreshed itself as a chain that armed the next fetch from
+inside the Google API callback. A network outage on the Pi could leave a request that
+never came back, ending the chain silently. A restart was the only recovery.
+
+**Fixed** in the fork (`modules/MMM-GoogleCalendar`, commit bb3d82e): rescheduling runs
+in a `finally` block and requests time out, so the loop always recovers.
+
+**If it recurs**, check that the fetch loop is still alive before restarting:
+
+```bash
+ssh brendancf@magic-mirror 'grep -ah "events loaded" ~/.pm2/logs/mm-out*.log | tail -5'
+```
+
+Recent timestamps mean the loop is running and the problem is elsewhere. Timestamps
+days old mean the loop died; `pm2 restart mm` restores it.
+
 ### MMM-Remote-Control uuid ESM Issue
 
 **Problem**: MMM-Remote-Control v3.3.0 uses `uuid@13` which is ESM-only. Electron's bundled Node.js doesn't support ESM `require()`, causing MagicMirror to fail to start.
